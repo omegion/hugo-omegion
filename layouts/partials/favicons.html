@@ -1,4 +1,27 @@
-<link rel="apple-touch-icon" sizes="180x180" href="{{ "favicon/apple-touch-icon.png" | relURL }}" />
-<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon/favicon-32x32.png" | relURL }}" />
-<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon/favicon-16x16.png" | relURL }}" />
-<link rel="manifest" href="{{ "favicon/site.webmanifest" | relURL }}" />
+<link rel="icon" type="image/svg+xml" href="{{ (site.Params.favicon.light | default "favicon/light.svg") | relURL }}" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/svg+xml" href="{{ (site.Params.favicon.dark | default "favicon/dark.svg") | relURL }}" media="(prefers-color-scheme: dark)" />
+
+{{ with resources.Get (site.Params.favicon.raster | default "favicon/favicon.png") }}
+  {{ $appleTouch := .Resize "180x180 png" }}
+  {{ $icon32 := .Resize "32x32 png" }}
+  {{ $icon16 := .Resize "16x16 png" }}
+  {{ $android192 := .Resize "192x192 png" }}
+  {{ $android512 := .Resize "512x512 png" }}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouch.RelPermalink }}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ $icon32.RelPermalink }}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ $icon16.RelPermalink }}" />
+
+  {{ $manifest := dict
+    "name" site.Title
+    "short_name" site.Title
+    "icons" (slice
+      (dict "src" $android192.RelPermalink "sizes" "192x192" "type" "image/png")
+      (dict "src" $android512.RelPermalink "sizes" "512x512" "type" "image/png")
+    )
+    "theme_color" "#ffffff"
+    "background_color" "#ffffff"
+    "display" "standalone"
+  }}
+  {{ $webmanifest := resources.FromString "favicon/site.webmanifest" ($manifest | jsonify) }}
+  <link rel="manifest" href="{{ $webmanifest.RelPermalink }}" />
+{{ end }}
