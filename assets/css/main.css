@@ -748,12 +748,6 @@ h4 {
   color: var(--text);
 }
 
-.toc-title {
-  margin-bottom: 0.25rem;
-  font-weight: 500;
-  color: var(--text);
-}
-
 .toc-active {
   color: var(--text);
 }
