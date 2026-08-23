@@ -40,7 +40,17 @@ export function initToc() {
     });
   }
 
-  if (!targets.length) return;
+  const PIN_THRESHOLD = 320;
+
+  function updatePinned() {
+    toc.classList.toggle("toc-pinned", window.scrollY > PIN_THRESHOLD);
+  }
+
+  if (!targets.length) {
+    updatePinned();
+    window.addEventListener("scroll", updatePinned, { passive: true });
+    return;
+  }
 
   const OFFSET = 96;
   let ticking = false;
@@ -51,6 +61,7 @@ export function initToc() {
 
   function update() {
     ticking = false;
+    updatePinned();
     let current = targets[0];
     for (const target of targets) {
       if (target.el.getBoundingClientRect().top - OFFSET <= 0) {
