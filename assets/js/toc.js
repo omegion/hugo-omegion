@@ -2,6 +2,18 @@ export function initToc() {
   const toc = document.getElementById("toc");
   if (!toc) return;
 
+  function syncTocTop() {
+    const prose = document.querySelector(".prose");
+    if (!prose) return;
+    toc.style.setProperty("--toc-top", prose.offsetTop + "px");
+  }
+
+  syncTocTop();
+  window.addEventListener("resize", syncTocTop);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncTocTop);
+  }
+
   const toggle = document.getElementById("toc-toggle");
   const links = Array.from(toc.querySelectorAll(".toc-link"));
   const targets = links
