@@ -641,11 +641,12 @@ h4 {
 @media (min-width: 1280px) {
   .toc {
     display: flex;
+    max-height: none;
+    overflow-y: visible;
   }
 
   .toc.toc-pinned {
     top: 4rem;
-    max-height: calc(100vh - 5rem);
   }
 }
 
@@ -745,7 +746,6 @@ h4 {
 
 .toc-link:hover {
   color: var(--text);
-  background: var(--hover-bg-2);
 }
 
 .toc-title {
