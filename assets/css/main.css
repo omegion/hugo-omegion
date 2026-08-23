@@ -635,11 +635,17 @@ h4 {
   right: 2rem;
   max-height: calc(100vh - 12rem);
   overflow-y: auto;
+  transition: top 0.35s ease;
 }
 
 @media (min-width: 1280px) {
   .toc {
     display: flex;
+  }
+
+  .toc.toc-pinned {
+    top: 4rem;
+    max-height: calc(100vh - 5rem);
   }
 }
 
