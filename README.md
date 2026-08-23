@@ -137,6 +137,13 @@ The theme links to (but does not ship) `static/favicon/apple-touch-icon.png`,
 `favicon-32x32.png`, `favicon-16x16.png`, and `site.webmanifest` — provide
 your own in your site's `static/favicon/`.
 
+## Releases
+
+Every merge to `main` automatically tags and publishes a new GitHub release
+([workflow](.github/workflows/release.yml)). It defaults to a patch bump;
+include `#minor` or `#major` in the commit/PR title for a bigger bump, or
+`[skip release]` to skip releasing entirely.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
