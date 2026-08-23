@@ -8,7 +8,6 @@
   {{ partial "icon.html" "list" }}
 </button>
 <nav class="toc" id="toc">
-  <a href="#top" class="toc-link toc-title">{{ .Title | emojify }}</a>
   {{ range $headings }}
   <a href="#{{ .ID }}" class="toc-link">{{ .Title | emojify }}</a>
   {{ end }}
