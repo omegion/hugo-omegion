@@ -1,0 +1,28 @@
+{{ define "main" }}
+  {{ $writing := (where site.RegularPages "Type" "posts").ByDate.Reverse }}
+  {{ $work := (where site.RegularPages "Type" "projects").ByDate.Reverse }}
+  {{ $writingCount := site.Params.homepage.writingCount | default 6 }}
+  {{ $workCount := site.Params.homepage.workCount | default 6 }}
+
+  <div class="section">
+    <div class="section-label">Writing</div>
+    {{ range first $writingCount $writing }}
+      {{ partial "post-row.html" . }}
+    {{ end }}
+    {{ if gt (len $writing) $writingCount }}
+      <a class="more-link" href="{{ "/posts/" | relLangURL }}">All posts <span class="arrow">&#8594;</span></a>
+    {{ end }}
+  </div>
+
+  {{ if $work }}
+  <div class="section">
+    <div class="section-label">Work</div>
+    {{ range first $workCount $work }}
+      {{ partial "work-row.html" . }}
+    {{ end }}
+    {{ if gt (len $work) $workCount }}
+      <a class="more-link" href="{{ "/projects/" | relLangURL }}">All work <span class="arrow">&#8594;</span></a>
+    {{ end }}
+  </div>
+  {{ end }}
+{{ end }}

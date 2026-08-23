@@ -1,0 +1,12 @@
+{{- $result := transform.HighlightCodeBlock . -}}
+<div class="code-block">
+  <div class="code-block-header">
+    <span class="code-block-lang">{{ .Type | default "text" }}</span>
+    <button type="button" class="code-copy" aria-label="Copy code">
+      <span class="code-copy-icon">{{ partial "icon.html" "copy" }}</span>
+      <span class="code-copy-icon code-copy-icon-check">{{ partial "icon.html" "check" }}</span>
+      <span class="code-copy-label">Copy</span>
+    </button>
+  </div>
+  {{ $result.Wrapped }}
+</div>

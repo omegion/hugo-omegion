@@ -1,0 +1,5 @@
+{{- $external := .Params.externalUrl -}}
+<a class="link-row" href="{{ with $external }}{{ . }}{{ else }}{{ .RelPermalink }}{{ end }}" {{ with $external }}target="_blank" rel="noopener"{{ end }}>
+  <span class="link-row-title">{{ .Title | emojify }}</span>
+  <span class="link-row-meta">{{ .Date.Format "Jan 2006" }}{{ with $external }} <span class="ext-arrow-inline">&#8599;</span>{{ end }}</span>
+</a>

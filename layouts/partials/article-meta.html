@@ -1,0 +1,7 @@
+<div class="article-meta">
+  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (site.Params.dateFormat | default "2 January 2006") }}</time>
+  {{ if and (eq .Type "posts") (ne .ReadingTime 0) }}
+  <span class="meta-sep">&middot;</span>
+  <span>{{ .ReadingTime }} min read</span>
+  {{ end }}
+</div>

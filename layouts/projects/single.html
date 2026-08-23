@@ -1,0 +1,81 @@
+{{ define "main" }}
+  <article class="article">
+    {{ $logo := "" }}
+    {{ with .Resources.GetMatch "logo.*" }}
+    {{ with (.Fit "96x96") }}
+    {{ $logo = . }}
+    {{ end }}
+    {{ end }}
+
+    {{ $isGithubUrl := and .Params.externalUrl (in .Params.externalUrl "github.com") }}
+    {{ $website := .Params.website | default (cond $isGithubUrl "" .Params.externalUrl) }}
+    {{ $github := .Params.github | default (cond $isGithubUrl .Params.externalUrl "") }}
+
+    <header class="article-header project-header" id="top">
+      {{ with $logo }}
+      <img class="project-logo" src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
+      {{ end }}
+      <div class="project-header-text">
+        <h1>{{ .Title | emojify }}{{ if .Params.discontinued }} <span class="badge">Discontinued</span>{{ end }}</h1>
+        <div class="article-meta">
+          <span>Launched {{ .Date.Format "January 2006" }}</span>
+          {{ if .Params.discontinued }}
+          {{ with .Params.discontinuedDate }}
+          <span class="meta-sep">&middot;</span>
+          <span>Discontinued {{ (. | time.AsTime).Format "January 2006" }}</span>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </header>
+
+    {{ with .Params.summary }}
+    <p class="project-summary">{{ . }}</p>
+    {{ end }}
+
+    {{ if or .Params.appStore $website $github .Params.docs }}
+    <div class="project-links">
+      {{ with .Params.appStore }}
+      <a href="{{ . }}" target="_blank" rel="noopener">{{ partial "icon.html" "external-link" }}<span>App Store</span></a>
+      {{ end }}
+      {{ with $website }}
+      <a href="{{ . }}" target="_blank" rel="noopener">{{ partial "icon.html" "external-link" }}<span>Website</span></a>
+      {{ end }}
+      {{ with .Params.docs }}
+      <a href="{{ . }}" target="_blank" rel="noopener">{{ partial "icon.html" "book" }}<span>Docs</span></a>
+      {{ end }}
+      {{ with $github }}
+      <a href="{{ . }}" target="_blank" rel="noopener">{{ partial "icon.html" "github" }}<span>GitHub</span></a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .Content }}
+    <div class="prose">
+      {{ . | emojify }}
+    </div>
+    {{ end }}
+
+    {{ if and .Params.discontinued .Params.discontinuedReason }}
+    <div class="project-note">
+      <div class="project-note-label">Why it ended</div>
+      <p>{{ .Params.discontinuedReason | emojify | markdownify }}</p>
+    </div>
+    {{ end }}
+
+    {{ with .Params.lessonsLearned }}
+    <div class="project-note">
+      <div class="project-note-label">What I learned</div>
+      <p>{{ . | emojify | markdownify }}</p>
+    </div>
+    {{ end }}
+
+    {{ with .Params.tags }}
+    <div class="tag-list">
+      {{ range . }}
+      <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </article>
+{{ end }}

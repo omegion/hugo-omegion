@@ -1,0 +1,16 @@
+{{- $roots := .Fragments.Headings -}}
+{{- $headings := slice -}}
+{{- if gt (len $roots) 0 -}}
+  {{- $headings = (index $roots 0).Headings -}}
+{{- end -}}
+{{- if $headings }}
+<button type="button" id="toc-toggle" class="toc-toggle" aria-label="Table of contents" aria-expanded="false" aria-controls="toc">
+  {{ partial "icon.html" "list" }}
+</button>
+<nav class="toc" id="toc">
+  <a href="#top" class="toc-link toc-title">{{ .Title | emojify }}</a>
+  {{ range $headings }}
+  <a href="#{{ .ID }}" class="toc-link">{{ .Title | emojify }}</a>
+  {{ end }}
+</nav>
+{{- end -}}

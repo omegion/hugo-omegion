@@ -1,0 +1,10 @@
+{{- $external := .Params.externalUrl -}}
+<a class="link-row-ext" href="{{ with $external }}{{ . }}{{ else }}{{ .RelPermalink }}{{ end }}" {{ with $external }}target="_blank" rel="noopener"{{ end }}>
+  <div class="link-row-ext-inner">
+    <span class="link-row-title">{{ .Title | emojify }}{{ if .Params.discontinued }} <span class="badge">Discontinued</span>{{ end }}</span>
+    {{- with .Params.summary }}
+    <div class="link-row-desc">{{ . }}</div>
+    {{- end }}
+  </div>
+  <span class="ext-arrow"{{ if not $external }} style="visibility:hidden"{{ end }}>&#8599;</span>
+</a>

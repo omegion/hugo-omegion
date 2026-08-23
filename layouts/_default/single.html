@@ -1,0 +1,35 @@
+{{ define "main" }}
+  <article class="article">
+    <header class="article-header" id="top">
+      <h1>{{ .Title | emojify }}</h1>
+      {{ partial "article-meta.html" . }}
+    </header>
+
+    {{ if and (site.Params.enableTableOfContents | default true) (.Params.showTableOfContents | default true) }}
+    {{ partial "toc.html" . }}
+    {{ end }}
+
+    <div class="prose">
+      {{ .Content | emojify }}
+    </div>
+
+    {{ with .Params.tags }}
+    <div class="tag-list">
+      {{ range . }}
+      <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ if eq .Type "posts" }}
+    {{ $prev := .PrevInSection }}
+    {{ $next := .NextInSection }}
+    {{ if or $prev $next }}
+    <nav class="article-pagination">
+      {{ with $prev }}<a class="prev" href="{{ .RelPermalink }}"><span class="pagination-arrow">&larr;</span><span class="pagination-title">{{ .Title | emojify }}</span></a>{{ end }}
+      {{ with $next }}<a class="next" href="{{ .RelPermalink }}"><span class="pagination-title">{{ .Title | emojify }}</span><span class="pagination-arrow">&rarr;</span></a>{{ end }}
+    </nav>
+    {{ end }}
+    {{ end }}
+  </article>
+{{ end }}

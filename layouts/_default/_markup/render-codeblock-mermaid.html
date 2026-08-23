@@ -1,0 +1,3 @@
+<pre class="mermaid" id="mermaid-{{ .Ordinal }}"></pre>
+<script>(window.__mermaidSources ||= {})["mermaid-{{ .Ordinal }}"] = {{ .Inner | jsonify | safeJS }};</script>
+{{ .Page.Store.Set "hasMermaid" true }}

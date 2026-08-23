@@ -1,0 +1,12 @@
+name = "Omegion"
+license = "MIT"
+licenselink = "https://github.com/omegion/hugo-omegion/blob/master/LICENSE"
+description = "A minimal, sidebar-first Hugo theme for a personal blog + project showcase, with dark mode, client-side search, table of contents, and mermaid support."
+homepage = "https://github.com/omegion/hugo-omegion"
+tags = ["blog", "minimal", "dark-mode", "search", "responsive", "personal", "portfolio"]
+features = ["dark-mode", "search", "table-of-contents", "mermaid", "syntax-highlighting", "rss", "seo", "responsive"]
+min_version = "0.146.0"
+
+[author]
+  name = "Hakan Kurtulus"
+  homepage = "https://omegion.dev/"

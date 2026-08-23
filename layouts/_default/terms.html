@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <div class="page-header">
+    <h1>{{ .Title }}</h1>
+  </div>
+
+  <div class="section">
+    {{ range .Data.Terms.Alphabetical }}
+    <a class="link-row" href="{{ .Page.RelPermalink }}">
+      <span class="link-row-title">{{ .Page.Title }}</span>
+      <span class="link-row-meta">{{ .Count }}</span>
+    </a>
+    {{ end }}
+  </div>
+{{ end }}

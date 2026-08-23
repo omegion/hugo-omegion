@@ -1,0 +1,49 @@
+<header class="mobile-header">
+  <a class="mobile-header-title logo-letters" href="{{ "/" | relLangURL }}">{{ partial "logo-text.html" . }}</a>
+  <button type="button" id="sidebar-toggle" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+    {{ partial "icon.html" "list" }}
+  </button>
+</header>
+
+<div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <h1 class="site-title"><a href="{{ "/" | relLangURL }}" class="logo-letters">{{ partial "logo-text.html" . }}</a></h1>
+
+    {{- range site.Params.author.bio }}
+    <p class="bio">{{ . | emojify }}</p>
+    {{- end }}
+
+    {{- if site.Params.enableSearch }}
+    <div class="sidebar-tools">
+      <button type="button" id="search-open" aria-label="Search">
+        {{ partial "icon.html" "search" }}
+        <span>Search</span>
+      </button>
+    </div>
+    {{- end }}
+
+    <div class="sidebar-links">
+      {{- if not .IsHome }}
+      <a href="{{ "/" | relLangURL }}">{{ partial "icon.html" "home" }}<span>Home</span></a>
+      {{- end }}
+      {{- range site.Params.author.links }}
+      <a href="{{ .url }}" target="_blank" rel="me noopener">{{ partial "icon.html" .icon }}<span>{{ .name }}</span></a>
+      {{- end }}
+      <a href="{{ "/index.xml" | relLangURL }}">{{ partial "icon.html" "rss" }}<span>RSS</span></a>
+    </div>
+  </div>
+
+  <div class="sidebar-bottom">
+    <div class="sidebar-links">
+      <a href="{{ "/tags/" | relLangURL }}">{{ partial "icon.html" "tag" }}<span>Tags</span></a>
+      <button type="button" id="theme-toggle" aria-label="Toggle color theme">
+        <span class="icon-sun">{{ partial "icon.html" "sun" }}</span>
+        <span class="icon-moon">{{ partial "icon.html" "moon" }}</span>
+        <span class="theme-toggle-label">Theme</span>
+      </button>
+    </div>
+    <div class="sidebar-footer">&copy; {{ now.Year }} {{ site.Copyright | default site.Title }}</div>
+  </div>
+</aside>
