@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {{- $title := cond .IsHome site.Title (printf "%s · %s" (.Title | emojify | plainify) site.Title) }}
+  {{- $title := cond .IsHome (site.Params.homeTitle | default site.Title) (printf "%s · %s" (.Title | emojify | plainify) site.Title) }}
   {{- $description := cond (ne .Description "") .Description (cond .IsPage (.Summary | plainify) site.Params.description) }}
   <title>{{ $title }}</title>
   <meta name="title" content="{{ $title }}" />
