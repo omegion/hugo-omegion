@@ -6,6 +6,8 @@ contents, mermaid diagrams, syntax-highlighted code blocks with a copy
 button, RSS, SEO/OpenGraph/JSON-LD metadata, and a responsive collapsible
 sidebar.
 
+![hugo-omegion screenshot](https://raw.githubusercontent.com/omegion/hugo-omegion/main/images/tn.png)
+
 Live example: [omegion.dev](https://omegion.dev), built with this theme.
 
 ## Requirements
