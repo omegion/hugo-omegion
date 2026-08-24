@@ -1,0 +1,5 @@
+{{ if and (site.Params.enableUpdatedDate | default true) (.Params.showUpdatedDate | default true) (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}
+<div class="article-updated">
+  Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format (site.Params.dateFormat | default "2 January 2006") }}</time>
+</div>
+{{ end }}
