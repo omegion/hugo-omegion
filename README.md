@@ -53,6 +53,11 @@ your own site. Copy it from
 [`exampleSite/config/_default`](exampleSite/config/_default):
 
 - **`enableEmoji: true`** — the theme uses `emojify` throughout.
+- **`enableGitInfo: true`** — powers the "Updated" date shown at the
+  bottom of posts and projects, derived from each file's last git commit.
+  Requires full git history at build time (e.g. `fetch-depth: 0` in
+  `actions/checkout`). Without it, `.Lastmod` falls back to the page's
+  `date` and no "Updated" line is shown.
 - **`outputs.home`** must include `"searchindex"`, plus the matching
   `outputFormats.searchindex` definition — this powers `/index.json`,
   which the search modal fetches. See
@@ -128,6 +133,7 @@ All under `params:` (or `[params]`) in your site or language config:
 | `dateFormat` | `2 January 2006` | Go time-format string used for displayed dates. |
 | `enableSearch` | `false` | Show the search button and enable the search modal. |
 | `enableTableOfContents` | `true` | Show a table of contents on posts (per-page override: `showTableOfContents` front matter). |
+| `enableUpdatedDate` | `true` | Show an "Updated" date at the bottom of posts and projects when the file's git-derived last-modified date differs from its `date` (per-page override: `showUpdatedDate` front matter). Requires `enableGitInfo: true`. |
 | `homepage.writingCount` | `6` | How many recent posts to show on the homepage. |
 | `homepage.workCount` | `6` | How many recent projects to show on the homepage. |
 | `search.recentPostsCount` | `3` | Recent posts shown in the empty search state. |

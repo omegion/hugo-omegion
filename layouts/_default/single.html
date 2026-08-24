@@ -13,11 +13,17 @@
       {{ .Content | emojify }}
     </div>
 
-    {{ with .Params.tags }}
-    <div class="tag-list">
-      {{ range . }}
-      <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+    {{ $updated := partial "article-updated.html" . }}
+    {{ if or .Params.tags (ne (strings.TrimSpace $updated) "") }}
+    <div class="article-footer">
+      {{ with .Params.tags }}
+      <div class="tag-list">
+        {{ range . }}
+        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+        {{ end }}
+      </div>
       {{ end }}
+      {{ $updated | safeHTML }}
     </div>
     {{ end }}
 

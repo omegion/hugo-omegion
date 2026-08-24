@@ -3,6 +3,7 @@
 defaultContentLanguage: "en"
 baseURL: "https://example.org/"
 enableRobotsTXT: true
+enableGitInfo: true
 paginate: 15
 summaryLength: 0
 enableEmoji: true
