@@ -439,6 +439,11 @@ h4 {
     color: var(--text);
     font-size: 0.97rem;
     line-height: 1.4;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .link-row-meta {
