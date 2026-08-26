@@ -429,6 +429,11 @@ h4 {
     border-bottom: 1px solid var(--border);
 }
 
+.link-row:not(:has(+ .link-row, + .link-row-ext))::after,
+.link-row-ext:not(:has(+ .link-row, + .link-row-ext))::after {
+    border-bottom: none;
+}
+
 .link-row:hover,
 .link-row-ext:hover {
     background: var(--hover-bg);
