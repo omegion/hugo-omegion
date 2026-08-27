@@ -779,7 +779,7 @@ h4 {
 }
 
 .toc-active {
-    color: var(--text);
+    color: var(--body-text);
 }
 
 /* -- Prose -- */
