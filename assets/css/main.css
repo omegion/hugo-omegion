@@ -472,11 +472,17 @@ h4 {
 }
 
 .ext-arrow {
+    display: inline-block;
     color: var(--muted);
     flex-shrink: 0;
     align-self: flex-start;
     margin-top: 0.15rem;
     font-size: 0.8rem;
+    transition: transform 0.15s ease;
+}
+
+.link-row-ext:hover .ext-arrow {
+    transform: translate(2px, -2px);
 }
 
 .ext-arrow-inline {
