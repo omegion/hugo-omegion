@@ -10,7 +10,7 @@
   <img class="project-card-logo" src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
   {{- end }}
   <div class="link-row-ext-inner">
-    <span class="project-card-title">{{ $project.Title }}</span>
+    <span class="project-card-title">{{ $project.Title }}{{ if $project.Params.discontinued }} <span class="badge">Discontinued</span>{{ end }}</span>
     <div class="project-card-meta">Launched {{ $project.Date.Format "January 2006" }}</div>
     {{- with $project.Params.summary }}
     <div class="link-row-desc">{{ . }}</div>
