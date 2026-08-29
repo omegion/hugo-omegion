@@ -99,6 +99,13 @@ update as each section comes into view.
 This subsection exists mostly to add a bit more scroll distance and one more
 nested entry in the table of contents.
 
+## Linking to a project
+
+Posts can reference a project page with the `project-card` shortcode, which
+pulls in its title, launch date, summary, and logo:
+
+{{< project-card path="/projects/example-project" >}}
+
 ## Conclusion
 
 That's the whole post — enough headings to see the table of contents in
