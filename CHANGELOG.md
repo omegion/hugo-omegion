@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/omegion/hugo-omegion/compare/v1.1.0...v1.2.0) (2026-08-29)
+
+
+### Features
+
+* add external project entry with styling for external links ([24389db](https://github.com/omegion/hugo-omegion/commit/24389db7d78e5ac758ba3a1cb73cd1a50e0a05a2))
+
 ## [1.1.0](https://github.com/omegion/hugo-omegion/compare/v1.0.19...v1.1.0) (2026-08-29)
 
 
