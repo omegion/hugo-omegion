@@ -1,0 +1,23 @@
+{{- $path := .Get "path" -}}
+{{- $project := site.GetPage $path -}}
+{{- if $project -}}
+{{- $logo := "" -}}
+{{- with $project.Resources.GetMatch "logo.*" -}}
+  {{- with (.Fit "128x128") -}}{{ $logo = . }}{{- end -}}
+{{- end -}}
+<a class="link-row-ext project-card" href="{{ $project.RelPermalink }}">
+  {{- with $logo }}
+  <img class="project-card-logo" src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
+  {{- end }}
+  <div class="link-row-ext-inner">
+    <span class="project-card-title">{{ $project.Title }}</span>
+    <div class="project-card-meta">Launched {{ $project.Date.Format "January 2006" }}</div>
+    {{- with $project.Params.summary }}
+    <div class="link-row-desc">{{ . }}</div>
+    {{- end }}
+  </div>
+  <span class="ext-arrow">&#8599;</span>
+</a>
+{{- else -}}
+{{- errorf "project-card: no page found at path %q (%s)" $path .Position -}}
+{{- end -}}
