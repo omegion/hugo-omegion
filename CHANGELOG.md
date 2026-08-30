@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/omegion/hugo-omegion/compare/v1.2.0...v1.3.0) (2026-08-30)
+
+
+### Features
+
+* add native page-transition animations between pages ([f93ea1b](https://github.com/omegion/hugo-omegion/commit/f93ea1b2dd13ffabd93f9327c9f81c46e93d672a))
+
 ## [1.2.0](https://github.com/omegion/hugo-omegion/compare/v1.1.0...v1.2.0) (2026-08-29)
 
 
