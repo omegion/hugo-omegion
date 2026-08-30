@@ -1,7 +1,7 @@
 {{- $external := .Params.externalUrl -}}
 <a class="link-row-ext" href="{{ with $external }}{{ . }}{{ else }}{{ .RelPermalink }}{{ end }}" {{ with $external }}target="_blank" rel="noopener"{{ end }}>
   <div class="link-row-ext-inner">
-    <span class="link-row-title">{{ .Title | emojify }}{{ if .Params.discontinued }} <span class="badge">Discontinued</span>{{ end }}</span>
+    <span class="link-row-title"{{ if not $external }} style="view-transition-name: vt-title-{{ .File.UniqueID }}"{{ end }}>{{ .Title | emojify }}{{ if .Params.discontinued }} <span class="badge">Discontinued</span>{{ end }}</span>
     {{- with .Params.summary }}
     <div class="link-row-desc">{{ . }}</div>
     {{- end }}

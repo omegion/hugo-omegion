@@ -16,7 +16,7 @@
       <img class="project-logo" src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
       {{ end }}
       <div class="project-header-text">
-        <h1>{{ .Title | emojify }}{{ if .Params.discontinued }} <span class="badge">Discontinued</span>{{ end }}</h1>
+        <h1 style="view-transition-name: vt-title-{{ .File.UniqueID }}">{{ .Title | emojify }}{{ if .Params.discontinued }} <span class="badge">Discontinued</span>{{ end }}</h1>
         <div class="article-meta">
           <span>Launched {{ .Date.Format "January 2006" }}</span>
           {{ if .Params.discontinued }}

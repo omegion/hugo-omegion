@@ -258,6 +258,68 @@ h4 {
     }
 }
 
+/* -- Page transitions -- */
+
+@view-transition {
+    navigation: auto;
+}
+
+.sidebar {
+    view-transition-name: vt-sidebar;
+}
+
+.mobile-header {
+    view-transition-name: vt-mobile-header;
+}
+
+::view-transition-group(*) {
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-group(vt-sidebar),
+::view-transition-group(vt-mobile-header) {
+    animation: none;
+}
+
+::view-transition-old(vt-sidebar),
+::view-transition-new(vt-sidebar),
+::view-transition-old(vt-mobile-header),
+::view-transition-new(vt-mobile-header) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    animation: vt-fade-out 0.22s ease-in both;
+}
+
+::view-transition-new(root) {
+    animation: vt-fade-in 0.32s ease-out both;
+}
+
+@keyframes vt-fade-out {
+    to {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes vt-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+}
+
 /* -- Sidebar contents -- */
 
 .site-title {
