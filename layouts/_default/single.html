@@ -1,7 +1,7 @@
 {{ define "main" }}
   <article class="article">
     <header class="article-header" id="top">
-      <h1>{{ .Title | emojify }}</h1>
+      <h1 style="view-transition-name: vt-title-{{ .File.UniqueID }}">{{ .Title | emojify }}</h1>
       {{ partial "article-meta.html" . }}
     </header>
 
